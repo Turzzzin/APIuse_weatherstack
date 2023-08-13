@@ -1,3 +1,5 @@
+const { router } = require('./routes.js')
+
 // Função para validar o input do usuário
 function locationValidation(location) {
     const checkAccentLetters = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
@@ -12,7 +14,7 @@ function removeAccents(location) {
 };
 
 // Mapeamento para tradução da 'descrição' do Tempo
-const translatedConditions = {
+const conditionsMapping = {
     'Clear': 'Céu limpo',
     'Partly cloudy': 'Parcialmente nublado',
     'Overcast': 'Nublado',
@@ -41,11 +43,24 @@ const translatedConditions = {
     'Haze': "Névoa seca"
 };
 
+const translatedCondition = conditionsMapping[weatherData.current.weather_descriptions[0]] || weatherData.current.weatherDescription[0]; 
+
+const weatherData = response.data
+
 const weatherInfo = {
+    location: weatherData.location,
+    current: {
+        temperature: weatherData.current.temperature,
+        feelslike: weatherData.current.feelslike,
+        weatherDescription: translatedCondition,
+        humidity: weatherData.current.humidity,
+        windSpeed: weatherData.current.wind_speed,
+        weatherIcon: weatherData.current.weather_icons[0],
+    }
 };
 
 function errorMessages() {
-    if(!locationValidation) {
+    if(!locationValidation(location)) {
         res.status(422).json({ erro: 'Localização inválida. Insira apenas números ou apenas letras para a pesquisa.'});
     };
 };
@@ -54,6 +69,9 @@ function errorMessages() {
 module.exports = {
     locationValidation,
     removeAccents,
-    translatedConditions,
+    conditionsMapping,
     errorMessages,
+    weatherData,
+    translatedCondition,
+    weatherInfo,
 };

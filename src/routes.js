@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const { locationValidation, removeAccents, translatedConditions, errorMessages } = require('./utils.js');
+const { locationValidation, removeAccents, conditionsMapping, errorMessages, translatedCondition, weatherData, weatherInfo } = require('./utils.js');
 
 const router = express.Router();
 
@@ -19,3 +19,5 @@ router.get('/weather', (req, res) => {
         const apiKey = process.env.api_key;
     }
 });
+
+module.exports = router;
