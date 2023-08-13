@@ -3,3 +3,7 @@ const axios = require('axios');
 const { locationValidation, removeAccents, translatedConditions } = require('./utils.js');
 
 const router = express.Router();
+
+router.get('/', (req, res) => {
+    res.sendFile(__dirname + './views/index.html');
+});
