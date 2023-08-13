@@ -41,9 +41,19 @@ const translatedConditions = {
     'Haze': "Névoa seca"
 };
 
+const weatherInfo = {
+};
+
+function errorMessages() {
+    if(!locationValidation) {
+        res.status(422).json({ erro: 'Localização inválida. Insira apenas números ou apenas letras para a pesquisa.'});
+    };
+};
+
 // Exportar
 module.exports = {
     locationValidation,
     removeAccents,
     translatedConditions,
+    errorMessages,
 };
