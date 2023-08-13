@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const { locationValidation, removeAccents, conditionsMapping, errorMessages, translatedCondition, weatherData, weatherInfo } = require('./utils.js');
@@ -17,6 +18,18 @@ router.get('/weather', (req, res) => {
     } else {
         const locationWithoutAccent = removeAccents(location);
         const apiKey = process.env.api_key;
+        const apiUrl = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${locationWithoutAccent}`;
+
+        axios.get(apiUrl) .then(response => {
+            weatherData;
+            translatedCondition;
+            weatherInfo;
+        
+         res.json(weatherInfo);
+        })
+        .catch(error => {
+            res.status(500).json({ erro: 'Ocorreu um erro ao buscar informações sobre o tempo'});
+        });
     }
 });
 
