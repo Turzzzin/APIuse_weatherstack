@@ -7,3 +7,4 @@ const PORT = 3000;
 
 // Configurar o diretório estático (pasta public)
 server.use(express.static('public'));
+
