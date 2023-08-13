@@ -4,6 +4,13 @@ const { locationValidation, removeAccents, translatedConditions } = require('./u
 
 const router = express.Router();
 
+// Rota para página inicial
 router.get('/', (req, res) => {
     res.sendFile(__dirname + './views/index.html');
+});
+
+// Rota para obter as informações do tempo
+router.get('/weather', (req, res) => {
+    const { location } = req.query;
+    
 });
