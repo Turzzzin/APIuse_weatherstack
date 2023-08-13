@@ -1,0 +1,20 @@
+{
+  "name": "weatherstack_sozinho",
+  "version": "1.0.0",
+  "description": "Tentando fazer a requisição à API Weatherstack sozinho",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "author": "Artur Guimarães",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
