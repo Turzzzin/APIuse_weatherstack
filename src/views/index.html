@@ -4,8 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informações do tempo</title>
+    <link rel="stylesheet" href="/public/styles.css">
+    <link rel="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" href="stylesheet">
 </head>
 <body>
-    
+    <img src="img/compass.svg" alt="Compass UOL" width="150">
+  <div class="container">
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Previsão do Tempo">
+      <p class="titulo">Consulta<br>do Tempo</p>
+    </div>
+    <form id="formularioClima">
+      <input type="text" id="localizacao" name="localizacao" placeholder="Só letras ou só números" required>
+      <button id="pesquisa-btn" type="submit">Verificar Tempo</button>
+    </form>
+    <div class="informacoes-clima" id="informacoesClima">
+      <p>Digite o nome da cidade e clique em "Verificar Tempo".</p>
+    </div>
+  </div>
+
+  <script>
+    const weatherForm = document.getElementById('weatherForm');
+    const weatherInfo = document.getElementById('weatherInfo');
+
+    weatherForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const location = doucument.getElementById('location').value;
+        getWeatherInfo(location);
+    });
+  </script>
 </body>
 </html>
