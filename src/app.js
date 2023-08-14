@@ -1,6 +1,6 @@
+const routes = require('./routes.js');
 require('dotenv').config();
 const express = require('express');
-const routes = require('./src/routes.js');
 
 const server = express();
 const PORT = 3000;
