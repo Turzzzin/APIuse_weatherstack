@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 
 const server = express();
-const PORT = 3000;
+const PORT = 80;
 
 // Configurar o diretório estático (pasta public)
 server.use(express.static('public'));
